@@ -27,7 +27,7 @@ app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/orders", orderRouter);
 
-app.get("/ping", isLoggedin, (req, res) => {
+app.get("/ping",  (req, res) => {
   console.log(req.body);
   console.log(req.cookies);
   return res.json({
