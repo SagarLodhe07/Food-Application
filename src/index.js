@@ -36,7 +36,7 @@ app.get("/ping", (req, res) => {
 app.post("/photo", uploader.single("incomingFile"), async (req, res) => {
   const result = await cloudinary.uploader.upload(req.file.path);
   console.log("Result from cloud", result);
-  await fs.unlink(req.file.path);
+  await fs.unlink(req.file.path)
 
   // const newProduct = await Product.create({
   //   productName: "Margherita",
