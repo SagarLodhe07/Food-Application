@@ -5,11 +5,9 @@ const userRouter = require("./Routes/userRoute");
 const cartRouter = require("./Routes/cartRoute");
 const authRouter = require("./Routes/authRoute");
 const cookieParser = require("cookie-parser");
-const { isLoggedin } = require("./Validation/authValitars");
 const uploader = require("./middleware/multer");
 const cloudinary = require("./Config/cloudnaryConfig");
 const fs = require("fs/promises");
-const Product = require("./Schema/productSchema");
 const productRouter = require("./Routes/productRoutes");
 const orderRouter = require("./Routes/orderRoute");
 
@@ -27,7 +25,7 @@ app.use("/auth", authRouter);
 app.use("/product", productRouter);
 app.use("/orders", orderRouter);
 
-app.get("/ping",  (req, res) => {
+app.get("/ping", (req, res) => {
   console.log(req.body);
   console.log(req.cookies);
   return res.json({
