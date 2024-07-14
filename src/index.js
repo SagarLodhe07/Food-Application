@@ -10,9 +10,11 @@ const cloudinary = require("./Config/cloudnaryConfig");
 const fs = require("fs/promises");
 const productRouter = require("./Routes/productRoutes");
 const orderRouter = require("./Routes/orderRoute");
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.text());
