@@ -28,7 +28,10 @@ async function loginUser(authdetails) {
    const token = jwt.sign({ email: user.email, id: user._id,role:userRole },JWT_SECRET_KEY,{
     expiresIn:JWT_EXPIRES
   });
-  return token
+  return {token,userRole,userData:{
+    email:user.email,
+    firstName:user.firstName
+  }}
 }
 
 module.exports = {

@@ -2,6 +2,7 @@ const {
   createProductService,
   getProductById,
   deleteProductByID,
+  getAllProductsData,
 } = require("../Services/productService");
 const AppError = require("../Utils/appError");
 
@@ -67,6 +68,35 @@ async function getProduct(req, res) {
     });
   }
 }
+async function AllProductsDetails(req, res) {
+  try {
+    const response = await getAllProductsData();
+    return res.status(200).json({
+      message: "Successfully fetched all Products",
+      data: response,
+      error: {},
+      success: true,
+    });
+  } catch (error) {
+    if (error instanceof AppError) {
+      return res.status(error.statusCode).json({
+        message: error.message,
+        data: {},
+        error: error,
+        success: false,
+      });
+    }
+    console.log(error);
+    return res.status(500).json({
+      message: "Something went wrong",
+      data: {},
+      error: error,
+      success: false,
+    });
+  }
+}
+
+
 async function deleteProduct(req, res) {
   try {
     const response = await deleteProductByID(req.params.id);
@@ -98,5 +128,6 @@ async function deleteProduct(req, res) {
 module.exports = {
   addProduct,
   getProduct,
-  deleteProduct
+  deleteProduct,
+  AllProductsDetails
 };

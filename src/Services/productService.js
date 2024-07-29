@@ -43,6 +43,15 @@ async function getProductById(productID) {
   }
   return response;
 }
+async function getAllProductsData() {
+  const response = await ProductRepository.getAllProduct();
+
+  if (!response) {
+    // throw { reason: "Not able to find the product", statusCode: 404 };
+    throw new NotFoundError("Product");
+  }
+  return response;
+}
 
 async function deleteProductByID(productID) {
   const response = await ProductRepository.deleteProductByID(productID);
@@ -57,5 +66,6 @@ async function deleteProductByID(productID) {
 module.exports = {
   createProductService,
   getProductById,
+  getAllProductsData,
   deleteProductByID,
 };

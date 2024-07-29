@@ -41,7 +41,7 @@ async function modifyToCartbyUser(req, res) {
       req.params.operation == "add"
     );
     return res.status(200).json({
-      message: "successfully add to the cart",
+      message: `successfully ${req.params.operation} to the cart`,
       success: true,
       data: cart,
       error: {},

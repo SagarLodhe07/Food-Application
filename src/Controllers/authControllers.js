@@ -1,7 +1,8 @@
 const { loginUser } = require("../Services/authService");
 
 async function logOut(req, res) {
-  res.cookie("authToken", '');
+  console.log('Cookie From FrontEnd',req.cookies  );
+  res.cookie("authToken", "");
   return res.status(200).json({
     message: "Log Out Successfull",
     success: true,
@@ -14,7 +15,7 @@ async function login(req, res) {
   try {
     const loginPayload = req.body;
     const response = await loginUser(loginPayload);
-    res.cookie("authToken", response, {
+    res.cookie("authToken", response.token, {
       httpOnly: true,
       maxAge: 7 * 24 * 60 * 60 * 1000,
       secure: false,
@@ -22,7 +23,7 @@ async function login(req, res) {
     return res.status(200).json({
       success: true,
       message: "Successfully Login",
-      data: {},
+      data: { userRole: response.userRole, userData: response.userData },
       error: {},
     });
   } catch (error) {
@@ -37,5 +38,5 @@ async function login(req, res) {
 
 module.exports = {
   login,
-  logOut
+  logOut,
 };

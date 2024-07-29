@@ -10,15 +10,17 @@ const cloudinary = require("./Config/cloudnaryConfig");
 const fs = require("fs/promises");
 const productRouter = require("./Routes/productRoutes");
 const orderRouter = require("./Routes/orderRoute");
-const cors = require('cors');
+const cors = require("cors");
 
 const app = express();
 
-app.use(cors({
-  origin:'http://localhost:5173',
-  // origin:'*',
-  credentials:true  
-}))
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    // origin:'*',
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.text());
@@ -42,7 +44,7 @@ app.get("/ping", (req, res) => {
 app.post("/photo", uploader.single("incomingFile"), async (req, res) => {
   const result = await cloudinary.uploader.upload(req.file.path);
   console.log("Result from cloud", result);
-  await fs.unlink(req.file.path)
+  await fs.unlink(req.file.path);
 
   // const newProduct = await Product.create({
   //   productName: "Margherita",
