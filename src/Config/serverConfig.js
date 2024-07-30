@@ -9,6 +9,7 @@ module.exports = {
   CLOUDNARY_NAME: process.env.CLOUDNARY_NAME,
   CLOUDNARY_API_KEY: process.env.CLOUDNARY_API_KEY,
   CLOUDNARY_SECRET_KEY: process.env.CLOUDNARY_SECRET_KEY,
+  FRONTEND_URL:process.env.FRONTEND_URL
 };
 // # 9zs0EUXSr1GQv3PG
 // # sagar1990ku

@@ -16,7 +16,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://master--sagarapp.netlify.app/",
+    origin:serverConfig.FRONTEND_URL,
     // origin:'*',
     credentials: true,
   })
