@@ -14,13 +14,12 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(
-  cors({
-    origin:serverConfig.FRONTEND_URL,
-    // origin:'*',
-    credentials: true,
-  })
-);
+const corsOption ={
+  origin:serverConfig.FRONTEND_URL,
+  Credential:true
+}
+
+app.use(cors(corsOption))
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.text());
